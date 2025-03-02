@@ -1,86 +1,83 @@
-document.getElementById('gameCanvas').addEventListener('click', function() {
-    let corSelecionada = '#00FF00'; // Cor padrão
-    let verticesSelecionados = [];
-    let verticesContagem = new Map();
-    let triangulosPintados = 0; // Contador de triângulos pintados
-    const n = 5; // Substitua pelo número de lados do seu polígono
-    const maxTriangulos = n === 3 ? 1 : n - 2; // Número máximo de triângulos justapostos
+document.addEventListener("DOMContentLoaded", () => {
+    let canvas = document.getElementById("gameCanvas");
+    let ctx = canvas.getContext("2d");
 
-    document.getElementById('pintarElementos').addEventListener('click', function() {
+    let corSelecionada = "#000000"; // Cor padrão (preto)
+    let pinturaConcluida = false;
+    let selectedVerticesForTriangle = [];
+    let triangles = [];
+
+    // Ativar modo de pintura ao clicar no botão
+    document.getElementById("pintarElementos").addEventListener("click", () => {
         abrirSeletorDeCores();
     });
 
     function abrirSeletorDeCores() {
-        let inputCor = document.createElement('input');
-        inputCor.type = 'color';
+        if (pinturaConcluida) return; // Impede a reabertura após a pintura
+
+        let inputCor = document.createElement("input");
+        inputCor.type = "color";
         inputCor.value = corSelecionada;
-        if (verticesSelecionados.length > 0) {
-            alert('Você já selecionou vértices. Termine de pintar o triângulo antes de escolher outra cor.');
-            return;
-        }
-        inputCor.style.display = 'none';
+        inputCor.style.position = "absolute";
+        inputCor.style.right = "0";
+        inputCor.style.bottom = "0";
         document.body.appendChild(inputCor);
 
-        inputCor.addEventListener('input', function() {
+        inputCor.addEventListener("input", () => {
             corSelecionada = inputCor.value;
         });
 
-        inputCor.addEventListener('change', function() {
-            canvas.style.cursor = 'url("../Imagens/pincel.png"), auto'; // Ícone de pincel
-            canvas.addEventListener('click', selecionarVertice);
+        inputCor.addEventListener("change", () => {
+            canvas.style.cursor = 'url("C:/Users/Greice Lacerda/OneDrive/ASSUNTOS DE KELI/CAP-UERJPARA ARTIGOS FUTUROS 2025/Jogo Malha Refeito 2025/Imagens/pincel.png"), auto'; // Ícone de pincel
+            canvas.addEventListener("click", selecionarVertice);
         });
 
         inputCor.click();
     }
 
     function selecionarVertice(event) {
-        let x = event.offsetX;
-        let y = event.offsetY;
-        let verticeSelecionado = { x, y };
+        let rect = canvas.getBoundingClientRect();
+        let x = event.clientX - rect.left;
+        let y = event.clientY - rect.top;
 
-        if (verticesSelecionados.length === 3 && maxTriangulos === 1) {
-            alert('Você já pintou o número máximo de triângulos.');
-            bloquearInteracoes();
-            return;
-        }
-        else
-        if (triangulosPintados >= maxTriangulos) {
-            alert('Você já pintou o número máximo de triângulos.');
-            bloquearInteracoes();
-            return;
-        }
+        let vertex = vertices.find(v => Math.hypot(v.x - x, v.y - y) < 10);
 
-        if (verticesSelecionados.length < 3) {
-            verticesSelecionados.push(verticeSelecionado);
-            let key = `${x},${y}`;
-            verticesContagem.set(key, (verticesContagem.get(key) || 0) + 1);
+        if (vertex && !selectedVerticesForTriangle.includes(vertex)) {
+            selectedVerticesForTriangle.push(vertex);
 
-            if (verticesSelecionados.length === 3) {
-                pintarTriangulo(verticesSelecionados, corSelecionada);
-                triangulosPintados++;
-                verticesSelecionados = [];
+            if (selectedVerticesForTriangle.length === 3) {
+                paintTriangle();
             }
         }
+    }
 
-        if (Array.from(verticesContagem.values()).some(count => count > 2)) {
-            alert('Cada vértice pode ser selecionado no máximo duas vezes.');
-            verticesSelecionados = [];
-            verticesContagem.clear();
+    function paintTriangle() {
+        let [v1, v2, v3] = selectedVerticesForTriangle;
+
+        ctx.fillStyle = corSelecionada;
+        ctx.beginPath();
+        ctx.moveTo(v1.x, v1.y);
+        ctx.lineTo(v2.x, v2.y);
+        ctx.lineTo(v3.x, v3.y);
+        ctx.closePath();
+        ctx.fill();
+        ctx.stroke();
+
+        triangles.push({ v1, v2, v3 });
+
+        selectedVerticesForTriangle = [];
+
+        // Verifica se a pintura está completa apenas depois de pintar todos os triângulos
+        if (isFullyPainted()) {
+            pinturaConcluida = true;
+            canvas.style.cursor = "default"; // Voltar ao cursor normal
+            setTimeout(() => {  // Espera a pintura ser completamente renderizada
+                alert("Toda a figura foi preenchida!"); // Exibe a mensagem após a pintura
+            }, 0);
         }
     }
 
-    function pintarTriangulo(vertices, cor) {
-        ctx.beginPath();
-        ctx.moveTo(vertices[0].x, vertices[0].y);
-        ctx.lineTo(vertices[1].x, vertices[1].y);
-        ctx.lineTo(vertices[2].x, vertices[2].y);
-        ctx.closePath();
-        ctx.fillStyle = cor;
-        ctx.fill();
-    }
-
-    function bloquearInteracoes() {
-        document.getElementById('gameCanvas').removeEventListener('click', selecionarVertice);
-        document.getElementById('pintarElementos').disabled = true;
+    function isFullyPainted() {
+        return triangles.length >= vertices.length - 2;
     }
 });
