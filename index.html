@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Triangularizando e Aprendendo</title>
+    <link rel="stylesheet" href="estilos\estilos-comuns.css">
+    <link rel="stylesheet" href="estilos\estilo-index.css">
+    <meta name="description" content="Um jogo educativo para aprender sobre triangulação.">
+    <meta name="keywords" content="triangulação, educação, jogo, geometria">
+</head>
+<body>
+    <header>
+        <h1>Triangularizando e Aprendendo</h1>
+    </header>
+    <main id="game-container">
+        <aside id="orientaçao">
+            <fieldset class="orientaçao">
+                <div id="img">
+                  <div id="i2">
+                    <fieldset class="controls2">
+                    <button class="controls2" onclick="iniciarJogo()">Iniciar jogo</button>
+                        <script>
+                            function iniciarJogo() {
+                            window.location.href = 'fase1.html'; // Redireciona para a página fase1.html
+                            }
+                        </script>
+                    <button class="controls2" onclick="sairJogo()">Sair do jogo</button>
+                        <script>
+                            function sairJogo() {
+                            window.location.href = 'http://www.google.com/'; // Sai do jogo
+                            }
+                        </script>
+                    </fieldset>
+                    </div>
+                </div>
+            </fieldset>
+        </aside>
+        <section>
+        <fieldset class="orientaçao">
+                    <div>
+                    <h3>Bem-vindo ao Jogo de Construção de Polígonos e Sólidos!</h3>
+                        <p>Neste jogo, você terá a oportunidade de criar figuras geométricas interativas, 
+                        começando com polígonos em 2D e avançando para sólidos em 3D. 
+                        O jogo é dividido em fases, cada uma com desafios únicos e 
+                        ferramentas para ajudar na construção e personalização das figuras. 
+                        Como Jogar: </p>                                
+                    <ol>                    
+                        <li><b>Tela Inicial</b></li>
+                        <ul> 
+                        <li><b>Iniciar Jogo:</b> Comece sua jornada geométrica.</li>
+                        <li><b>Sair do Jogo:</b> Encerre o jogo.</li><br>
+                        </ul>
+                        <li><b>Fase 1 - Construção de Polígonos:</b></li>
+                        Insira, conecte e personalize elementos.<br><br>
+                        <li><b>Fase 2 - Construção de Sólidos:</b> </li>
+                        Trabalhe em 3D, crie sólidos geométricos<br>
+                    </ol>
+                </div>
+            </fieldset>   
+            </section>
+        </main>
+      <br>  
+    <footer>
+        <fieldset id="credits">
+            <legend>Créditos</legend>
+            Criado por Pablo e Greice em 2025
+        </fieldset>
+    </footer>
+    <script src="fase1.js"></script>
+    <script src="pintar.js"></script>
+    <script src="imprimir.js"></script>
+    </body>
+</html>

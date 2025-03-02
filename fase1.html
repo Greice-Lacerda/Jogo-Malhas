@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fase 1 - Jogo de Vértices</title>
+    <link rel="stylesheet" href="estilos/estilo-fase1.css">
+    <link rel="stylesheet" href="estilos/estilos-comuns.css">
+</head>
+<body>
+    <header>
+        <h1>Triangularizando e Aprendendo - Fase 1</h1>
+    </header>
+    <main id="game-container">
+        <aside id="sidebar">
+            <fieldset id="tela">
+                <legend><b>Instruções:</b></legend>
+                <div>
+                    <img src="Imagens/Logo.png" id="img1">
+                    <div class="texto-na-frente">
+                        <h3>Para jogar clique nos botões: </h3>
+                        <ul>
+                            <li><b>Adicionar Vértices:</b> Clique no botão e na malha e crie um vértice.</li><br>
+                            <li><b>Adicionar Arestas:</b> Clique no botão e em dois vértices para conectá-los.</li><br>
+                            <li><b>Pintar Elementos:</b> Clique no botão para colorir elementos da figura.</li><br>
+                            <li><b>Resetar:</b> Limpe a área do jogo.</li><br>
+                            <li><b>Salvar:</b> Salve a figura construída.</li><br>
+                            <li><b>Imprimir:</b> Imprima as figuras salvas.</li><br>
+                            <li><b>Voltar:</b> Volte à página inicial.</li><br>
+                            <li><b>Sair:</b> Encerre o jogo.</li><br>
+                        </ul>
+                    </div>
+                </div>
+            </fieldset>
+        </aside>
+        <section>
+            <fieldset id="tela">
+                <legend><b>Malha:</b></legend>
+                <canvas id="gameCanvas"></canvas>
+            </fieldset>
+        </section>
+        <section>
+            <fieldset class="controls">
+                <legend><b>Controles:</b></legend>
+                <div class="draggable" id="addVertex" draggable="true">
+                    <button class="paint-button"><img src="Imagens/ponto-final.png" class="icon">Adicionar Vértice</button>
+                </div>
+                <div class="draggable" id="addEdge" draggable="true">
+                    <button class="paint-button"><img src="Imagens/reta.png" class="icon">Adicionar Aresta</button>
+                </div>
+                <div class="draggable" id="pintar" draggable="true">
+                    <button id="pintarElementos"><img src="Imagens/pincel.png" class="icon">Pintar Elementos</button>
+                </div>
+            </fieldset>
+            <div class="controls1">
+                <button id="resetButton"><b>Resetar</b></button>
+                <button id="salvarJogo"><b>Salvar</b></button>
+                <button onclick="imprimirJogo()"><b>Imprimir</b></button>
+                <button onclick="voltar()"><b>Voltar</b></button>
+                <button onclick="sairJogo()"><b>Sair</b></button>
+            </div>
+        </section>
+    </main>
+    <footer>
+        <fieldset id="credits">
+            <legend>Créditos</legend>
+            <p>Criado por Pablo e Greice em 2025</p>
+        </fieldset>
+    </footer>
+    <script src="fase1.js"></script>
+</body>
+</html>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <title>Imprimir - Jogo de Vértices</title>
+  <link rel="stylesheet" href="estilos/estilos-comuns.css">
+  <link rel="stylesheet" href="estilos/estilo-imprimir.css">
+  </head>
+ <body>
+  <header>
+    <h1><b>Triangularizando e Aprendendo - Imprimir</b></h1>
+  </header>
+  <main id="game-container">
+    <aside id="sidebar">
+      <fieldset class="orientaçao">
+        <legend><b>Menu:</b></legend>
+        <button onclick="Voltar()"><b>Voltar</b></button>        
+        <button id="imprimirSelecionadas">Imprimir Imagens Selecionadas</button> 
+        <button onclick="sairJogo()"><b>Sair</b></button>      
+      </fieldset>
+    </aside>
+    <section>
+      <fieldset class="orientacao">
+        <legend><b>Imagens Salvas:</b></legend>
+        <div id="imagensContainer"></div>      
+          <!-- As imagens serão exibidas aqui -->
+        </div>
+      </fieldset>
+    </section>
+  </main>
+  <footer>
+    <fieldset id="credits">
+      <legend>Créditos</legend>
+      <p>Criado por Pablo e Greice em 2025</p>
+    </fieldset>
+  </footer>
+  <!-- Modal para visualização de imagens -->
+  <div id="myModal" class="modal">
+    <span class="close">&times;</span>
+    <img class="modal-content" id="imgModal">
+  </div>
+  <script src="js/imprimir.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.7.1/jszip.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2.0.5/FileSaver.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/compressorjs/1.0.7/compressor.min.js"></script>
+</body>
+</html>
