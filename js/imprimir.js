@@ -1,16 +1,11 @@
-// Função para voltar à página inicial
-function Voltar() {
-    window.location.href = 'fase1.html';
+// Função para voltar à página do jogo
+function Fechar() {
+    window.close();
 }
 
 // Função para voltar à página de impressão
 function voltar1() {
     window.location.href = 'imprimir.html';
-}
-
-// Função para sair do jogo
-function sairJogo() {
-    window.location.href = 'http://www.google.com/'; // Sai do jogo
 }
 
 // Função para carregar as imagens
@@ -130,11 +125,7 @@ document.getElementById('imprimirSelecionadas').addEventListener('click', () => 
             janelaImpressao.close();
             voltar1();
         });
-        janelaImpressao.document.getElementById('sairBtn').addEventListener('click', () => {
-            janelaImpressao.close();
-            sairJogo();
-        });
-
+        
         janelaImpressao.print();
         janelaImpressao.onafterprint = () => janelaImpressao.close(); // Fechar a janela após a impressão
     } else {

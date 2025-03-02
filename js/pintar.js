@@ -2,9 +2,6 @@ document.getElementById('gameCanvas').addEventListener('click', function() {
     let corSelecionada = '#00FF00'; // Cor padrão
     let verticesSelecionados = [];
     let verticesContagem = new Map();
-    let facesPintadas = new Set();
-    let numTriangulosPintados = 0;
-    const numTriangulosJustapostos = numVertices - 2;
 
     document.getElementById('pintarElementos').addEventListener('click', function() {
         abrirSeletorDeCores();
@@ -22,7 +19,7 @@ document.getElementById('gameCanvas').addEventListener('click', function() {
         });
 
         inputCor.addEventListener('change', function() {
-            canvas.style.cursor = 'url(C:/Users/Greice Lacerda/OneDrive/ASSUNTOS DE KELI/CAP-UERJPARA ARTIGOS FUTUROS 2025/Jogo Malha Refeito 2025/Imagens/pincel.png"), auto'; // Ícone de pincel
+            canvas.style.cursor = 'url("Imagens/pincel.png"), auto'; // Ícone de pincel
             canvas.addEventListener('click', selecionarVertice);
         });
 
@@ -40,17 +37,7 @@ document.getElementById('gameCanvas').addEventListener('click', function() {
             verticesContagem.set(key, (verticesContagem.get(key) || 0) + 1);
 
             if (verticesSelecionados.length === 3) {
-                let faceKey = verticesSelecionados.map(v => `${v.x},${v.y}`).sort().join('-');
-                if (facesPintadas.has(faceKey)) {
-                    alert('Erro: Esta face já foi pintada.');
-                } else {
-                    pintarTriangulo(verticesSelecionados, corSelecionada);
-                    facesPintadas.add(faceKey);
-                    numTriangulosPintados++;
-                    if (numTriangulosPintados === numTriangulosJustapostos) {
-                        mostrarBotaoProximaFase();
-                    }
-                }
+                pintarTriangulo(verticesSelecionados, corSelecionada);
                 verticesSelecionados = [];
             }
         }
@@ -70,14 +57,5 @@ document.getElementById('gameCanvas').addEventListener('click', function() {
         ctx.closePath();
         ctx.fillStyle = cor;
         ctx.fill();
-    }
-
-    function mostrarBotaoProximaFase() {
-        let botaoProximaFase = document.createElement('button');
-        botaoProximaFase.innerText = 'Próxima Fase';
-        botaoProximaFase.addEventListener('click', function() {
-            window.location.href = 'fase2.html';
-        });
-        document.body.appendChild(botaoProximaFase);
     }
 });

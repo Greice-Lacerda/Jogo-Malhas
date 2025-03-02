@@ -27,7 +27,7 @@ function voltar() {
 }
 
 function imprimirJogo() {
-    window.location.href = 'imprimir.html';
+    window.open('imprimir.html', '_blank');
 }
 
 function sairJogo() {
