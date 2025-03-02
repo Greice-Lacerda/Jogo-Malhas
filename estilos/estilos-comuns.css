@@ -14,6 +14,7 @@ body {
     height: 100vh;
     line-height: 1.6;
 }
+
 header {
     margin-top: 1px;
     margin-bottom: 15px;
@@ -35,6 +36,7 @@ header {
     background-color: #840b2a;
     background-blend-mode: overlay;
 }
+
 footer {
     margin-top: 2px;
     margin-bottom: 50px;
@@ -62,31 +64,37 @@ footer:hover {
 }
 
 fieldset#credits {
-    margin-top: 10px;
+    margin-top: 5px;
     padding: 5px;
     border: 1px transparent #ccc;
     border-radius: 5px;
 }
+
 fieldset#credits legend {
     padding: 0 10px;
     font-weight: bold; 
 }
+
 footer fieldset {
     margin: 0;
     padding: 0;
     border: none;
     text-align: center;
 }
+
 footer fieldset legend {
     display: none;
 }
+
 footer fieldset p {
     margin: 0;
     padding: 0;
 }
+
 legend {
     color: red;
 }
+
 .paint-button .icon {
     padding-top: 0px;
     padding-right: 25px;
@@ -94,12 +102,12 @@ legend {
     width: 30px;
     height: 30px;
 }
+
 #face {
     width: 60%;
     height: 60%;
     display: flex; 
 }
-
 
 h1{
     margin-top: 1px;
