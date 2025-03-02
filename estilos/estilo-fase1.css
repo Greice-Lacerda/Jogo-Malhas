@@ -111,6 +111,11 @@ canvas:active {
     filter: drop-shadow(10px 10px 2px); 
 }
 
+.pincel{
+    width: 30px; /* Ajusta a largura da imagem */
+    height: 30px; /* Ajusta a altura da imagem */
+}
+
 .texto-na-frente {
     position: absolute; /* Define a posição absoluta para o texto */
     top: 0; /* Alinha o texto ao topo do contêiner */

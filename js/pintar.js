@@ -4,7 +4,7 @@ document.getElementById('gameCanvas').addEventListener('click', function() {
     let verticesContagem = new Map();
     let triangulosPintados = 0; // Contador de triângulos pintados
     const n = 5; // Substitua pelo número de lados do seu polígono
-    const maxTriangulos = n - 2; // Número máximo de triângulos justapostos
+    const maxTriangulos = n === 3 ? 1 : n - 2; // Número máximo de triângulos justapostos
 
     document.getElementById('pintarElementos').addEventListener('click', function() {
         abrirSeletorDeCores();
@@ -38,6 +38,12 @@ document.getElementById('gameCanvas').addEventListener('click', function() {
         let y = event.offsetY;
         let verticeSelecionado = { x, y };
 
+        if (verticesSelecionados.length === 3 && maxTriangulos === 1) {
+            alert('Você já pintou o número máximo de triângulos.');
+            bloquearInteracoes();
+            return;
+        }
+        else
         if (triangulosPintados >= maxTriangulos) {
             alert('Você já pintou o número máximo de triângulos.');
             bloquearInteracoes();
@@ -68,7 +74,8 @@ document.getElementById('gameCanvas').addEventListener('click', function() {
         ctx.moveTo(vertices[0].x, vertices[0].y);
         ctx.lineTo(vertices[1].x, vertices[1].y);
         ctx.lineTo(vertices[2].x, vertices[2].y);
-               ctx.fillStyle = cor;
+        ctx.closePath();
+        ctx.fillStyle = cor;
         ctx.fill();
     }
 

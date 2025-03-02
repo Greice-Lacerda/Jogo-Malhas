@@ -161,7 +161,7 @@ function doLinesIntersect(p1, p2, p3, p4) {
     }
     return (ccw(p1, p3, p4) !== ccw(p2, p3, p4)) && (ccw(p1, p2, p3) !== ccw(p1, p2, p4));
 }
-ctx.lineWidth = 2; // Aumentar a espessura da aresta
+ctx.lineWidth = 3; // Aumentar a espessura da aresta
 function areAllVerticesConnected() {
     if (vertices.length === 0) return true;
 
