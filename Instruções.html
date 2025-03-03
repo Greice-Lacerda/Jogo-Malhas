@@ -6,6 +6,7 @@
     <title>Triangularizando e Aprendendo</title>
     <link rel="stylesheet" href="estilos\estilos-comuns.css">
     <link rel="stylesheet" href="estilos\estilo-index.css">
+    <link rel="stylesheet" href="estilos\estilo-instruções.css">
     <meta name="description" content="Um jogo educativo para aprender sobre triangulação.">
     <meta name="keywords" content="triangulação, educação, jogo, geometria">
 </head>
@@ -17,12 +18,12 @@
         <aside id="orientaçao">
             <fieldset class="orientaçao">
                 <div id="img">
-                  <div id="i2">
+                  <div id="i3">
                     <fieldset class="controls2">
-                    <button class="controls2" onclick="instruçõesJogo()">Vamos começar?</button>
+                    <button class="controls2" onclick="iniciarJogo()">Iniciar jogo</button>
                         <script>
-                            function instruçõesJogo() {
-                            window.location.href = 'Instruções.html'; // Redireciona para a página instruções.
+                            function iniciarJogo() {
+                            window.location.href = 'fase1.html'; // Redireciona para a página fase1.html
                             }
                         </script>
                     <button class="controls2" onclick="sairJogo()">Sair do jogo</button>

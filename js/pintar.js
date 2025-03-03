@@ -2,7 +2,7 @@ document.addEventListener("DOMContentLoaded", () => {
     let canvas = document.getElementById("gameCanvas");
     let ctx = canvas.getContext("2d");
 
-    let corSelecionada = "#000000"; // Cor padrão (preto)
+    let corSelecionada = "#f0ff00"; // Cor padrão
     let pinturaConcluida = false;
     let selectedVerticesForTriangle = [];
     let triangles = [];
@@ -14,27 +14,32 @@ document.addEventListener("DOMContentLoaded", () => {
 
     function abrirSeletorDeCores() {
         if (pinturaConcluida) return; // Impede a reabertura após a pintura
-
+    
+        // Cria o elemento de input do tipo color
         let inputCor = document.createElement("input");
         inputCor.type = "color";
-        inputCor.value = corSelecionada;
+        inputCor.value = corSelecionada || "#f0ff00"; // Define a cor padrão se corSelecionada não estiver definida
         inputCor.style.position = "absolute";
-        inputCor.style.right = "0";
-        inputCor.style.bottom = "0";
+        inputCor.style.left = "0"; // Posiciona à esquerda
+        inputCor.style.top = "0";  // Posiciona no topo
         document.body.appendChild(inputCor);
-
+    
+        // Define a corSelecionada ao interagir com o seletor
         inputCor.addEventListener("input", () => {
             corSelecionada = inputCor.value;
+            // Atualize a interface ou execute outras ações necessárias
         });
-
+    
+        // Restaura o cursor e adiciona o ouvinte de clique ao canvas
         inputCor.addEventListener("change", () => {
-            canvas.style.cursor = 'url("C:/Users/Greice Lacerda/OneDrive/ASSUNTOS DE KELI/CAP-UERJPARA ARTIGOS FUTUROS 2025/Jogo Malha Refeito 2025/Imagens/pincel.png"), auto'; // Ícone de pincel
+            canvas.style.cursor = 'url("Imagens/cursor-de-caneta.png"), auto'; // Ícone de pincel
             canvas.addEventListener("click", selecionarVertice);
         });
-
+    
+        // Dispara o clique no seletor para abrir a interface de seleção de cor
         inputCor.click();
-    }
-
+    } 
+    
     function selecionarVertice(event) {
         let rect = canvas.getBoundingClientRect();
         let x = event.clientX - rect.left;
@@ -72,8 +77,13 @@ document.addEventListener("DOMContentLoaded", () => {
             pinturaConcluida = true;
             canvas.style.cursor = "default"; // Voltar ao cursor normal
             setTimeout(() => {  // Espera a pintura ser completamente renderizada
+                aplausoAplausos.mp3;
                 alert("Toda a figura foi preenchida!"); // Exibe a mensagem após a pintura
             }, 0);
+
+            setTimeout(() => {  // Espera a pintura ser completamente renderizada
+                alert('Clique em salvar para continuar o jogo!'); // Exibe a mensagem após a pintura
+            }, 2);
         }
     }
 
