@@ -54,3 +54,47 @@ b{
     color: darkblue;
     text-shadow: 20px;
 }
+
+.texto-na-frente {
+    position: absolute; /* Define a posição absoluta para o texto */
+    top: 0; /* Alinha o texto ao topo do contêiner */
+    left: 0; /* Alinha o texto à esquerda do contêiner */
+    width: 100%; /* Ajusta a largura do texto */
+    color: black; /* Cor do texto */
+    z-index: 1; /* Garante que o texto fique na frente */
+    padding: 20px; /* Espaçamento interno para o texto */
+    margin-left: 20px;
+    margin-top: 20px;
+}
+
+#tela1{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-left: 1px;
+    margin-bottom: 10px;
+    padding: 1px;
+    border: 1px solid #ccc;
+    background-color: transparent;
+    width: 530px;
+    height: 400px;
+}
+
+.texto-na-frente1 {
+    position: absolute; /* Define a posição absoluta para o texto */
+    top: 0; /* Alinha o texto ao topo do contêiner */
+    left: 0; /* Alinha o texto à esquerda do contêiner */
+    width: 90%; /* Ajusta a largura do texto */
+    color: black; /* Cor do texto */
+    z-index: 1; /* Garante que o texto fique na frente */
+    padding: 20px; /* Espaçamento interno para o texto */
+    margin-left: 5px;
+    margin-top: 5px;
+}
+
+.legend1 {
+    color: yellow;
+    font-size: 18px;
+    filter: drop-shadow(0 0 5px white);
+}
+

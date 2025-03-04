@@ -62,8 +62,8 @@ h4, ol, ul, li {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    margin-left: 10px;
-    margin-right: 15px;
+    margin-left: 15px;
+    margin-right: 5px;
     padding: 10px;
     border: 2px solid outset #ccc;
     background-color: transparent;
@@ -73,6 +73,7 @@ h4, ol, ul, li {
     width: 200px;
     height: 50px;
     align-items: flex-start;
+    margin-left: 15px;
     padding: 1px;
     font-size: 16px; 
     cursor: pointer; 
@@ -90,6 +91,16 @@ h4, ol, ul, li {
 
 .controls button:active {
     transform: scale(0.95);
+}
+
+.draggable{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin-left: 8px;
+    margin-right: 15px;
+    margin-top: 1px;
+    padding: 1px;
 }
 
 canvas {
@@ -134,16 +145,6 @@ canvas:active {
     animation: spin 5s linear infinite;    
 }
 
-.controls1 {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    margin-left: 20px;
-    padding: 10px;
-    border: 1px solid #ccc;
-    background-color: transparent;
-}
-
 #tela{
     display: flex;
     flex-direction: column;
@@ -166,16 +167,17 @@ canvas:active {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    margin-left: 10px;
+    margin-left: 8px;
     margin-right: 15px;
-    padding: 10px;
+    margin-top: 1px;
+    padding: 1px;
     border: solid outset 2px #ccc;
     background-color: transparent;
 }
 
 .controls1 button {
     width: 200px;
-    height:30px;
+    height:35px;
     align-items: flex-start;
     padding: 5px;
     margin-bottom: 5px;
@@ -195,4 +197,19 @@ canvas:active {
 
 .controls1 button:active {
     transform: scale(0.95);
+}
+
+#p-texto{
+    text-align: justify;
+    font-size:14px;
+    padding: 1px;
+    margin-top: 1px;
+}
+
+#questao,#questao1,#questao3 ul, li {
+    margin-left: 15px;
+    text-align: justify;
+    font-size:15px;
+    padding: 1px;
+    margin-top: 1px;
 }
