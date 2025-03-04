@@ -3,3 +3,54 @@
     width: 430px;
     height: 50vh;
 }
+
+#tfase{
+    margin-top: 1px;
+    font-size:24px;
+    text-align: center;
+    filter: drop-shadow(2px 6px 8px rgba(255, 255, 255, 1));
+}
+
+#tfase:hover {
+    transform: scale(1.1);
+    text-shadow: 0 5px 5px rgba(255, 255, 255, 0.6);
+    animation: spin 5s linear infinite;
+}
+
+#tbem{
+    margin: 5px;
+    font-size:24px;
+    text-align: center; 
+    color: transparent;
+    background-clip: text;
+    background-color: hsl(34, 53%, 82%);   
+    background-image: repeating-linear-gradient(45deg, #d7dd60 0%, #e4f52a 20%, #f3a322 30%, #f5511b 40%, #230f07 50%, #37094a 60%, #83096e 70%, #840b2a 80%, #623c59 90%, #ef0a0a 100%);
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+#tbem:hover {
+    transform: scale(1.1);
+    text-shadow: 0 5px 5px white;
+    animation: spin 5s linear infinite;
+}    
+
+p{
+    text-align: justify;
+    font-size:12px;
+    padding: 1px;
+    margin-top: 1px;
+}
+
+#questao, ul, li {
+    margin-left: 15px;
+    text-align: justify;
+    font-size:12px;
+    padding: 1px;
+    margin-top: 1px;
+}
+
+b{
+    font-size:16px;
+    color: darkblue;
+    text-shadow: 20px;
+}

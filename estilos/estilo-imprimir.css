@@ -89,4 +89,28 @@ body {
   border: 5px solid blue; /* Mudar a cor conforme necessário */
 }
 
+.Tb{
+  color: black;
+  font-size: 22px;
+}
+
+fieldset {
+  position: relative; /* Garante que a posição absoluta do botão funcione */
+}
+
+.deleteBtn {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.deleteBtn i {
+  color: black;
+  font-size: 18px;
+}
+
+
 

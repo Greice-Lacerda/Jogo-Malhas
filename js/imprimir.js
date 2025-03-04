@@ -1,4 +1,4 @@
-// Função para voltar à página do jogo
+// Função para fechar a janela atual
 function Fechar() {
     window.close();
 }
@@ -8,157 +8,184 @@ function voltar1() {
     window.location.href = 'imprimir.html';
 }
 
-// Função para carregar as imagens
-document.getElementById('iimagensSalvas').addEventListener('click', () => {
-    const imagensSelecionadas = document.querySelectorAll('imagensSalvas');
-    if (imagensSelecionadas.length > 0) {
-        const janelaImpressao = window.open('', '_blank');
-        janelaImpressao.document.write('<style>');
-        janelaImpressao.document.write('header { height: 100px; margin-top: 1px; margin-bottom: 10px; padding: auto; text-align: center; width: 100%; color:#ccc; box-shadow: inset 0 0 10px #000; background: radial-gradient(rgba(255,255,255,0) 0, rgba(255,255,255,.15) 30%, rgba(255,255,255,.3) 32%, rgba(255,255,255,0) 33%) 0 0, radial-gradient(rgba(255,255,255,0) 0, rgba(255,255,255,.1) 11%, rgba(255,255,255,.3) 13%, rgba(255,255,255,0) 14%) 0 0, radial-gradient(rgba(255,255,255,0) 0, rgba(255,255,255,.2) 17%, rgba(255,255,255,.43) 19%, rgba(255,255,255,0) 20%) 0 110px, radial-gradient(rgba(255,255,255,0) 0, rgba(255,255,255,.2) 11%, rgba(255,255,255,.4) 13%, rgba(255,255,255,0) 14%) -130px -170px, radial-gradient(rgba(255,255,255,0) 0, rgba(255,255,255,.2) 11%, rgba(255,255,255,.4) 13%, rgba(255,255,255,0) 14%) 130px 370px, radial-gradient(rgba(255,255,255,0) 0, rgba(255,255,255,.1) 11%, rgba(255,255,255,.2) 13%, rgba(255,255,255,0) 14%) 0 0, linear-gradient(45deg, #343702 0%, #184500 20%, #187546 30%, #006782 40%, #0b1284 50%, #760ea1 60%, #83096e 70%, #840b2a 80%, #b13e12 90%, #e27412 100%); background-size: 470px 470px, 970px 970px, 410px 410px, 610px 610px, 530px 530px, 730px 730px, 100% 100%; background-color: #840b2a; background-blend-mode: overlay; }');
-        janelaImpressao.document.write('body { margin-bottom: 2px; margin-top: 2px; font-family: Arial, sans-serif; display: flex; flex-direction: column; margin-left: 50px; margin-right: 50px; align-items: center; background-image: linear-gradient(purple, white); background-clip: padding-box; padding: 5px; overflow-y: auto; height: auto; line-height: 1.6;}');
-        janelaImpressao.document.write('footer { height: 50px; font-size:10px; margin-top: 2px; margin-bottom: 50x; padding: 2px; background:radial-gradient(rgba(255,255,255,0) 0, rgba(255,255,255,.15) 30%, rgba(255,255,255,.3) 32%, rgba(255,255,255,0) 33%) 0 0, radial-gradient(rgba(255,255,255,0) 0, rgba(255,255,255,.1) 11%, rgba(255,255,255,.3) 13%, rgba(255,255,255,0) 14%) 0 0, radial-gradient(rgba(255,255,255,0) 0, rgba(255,255,255,.2) 17%, rgba(255,255,255,.43) 19%, rgba(255,255,255,0) 20%) 0 110px, radial-gradient(rgba(255,255,255,0) 0, rgba(255,255,255,.2) 11%, rgba(255,255,255,.4) 13%, rgba(255,255,255,0) 14%) -130px -170px, radial-gradient(rgba(255,255,255,0) 0, rgba(255,255,255,.2) 11%, rgba(255,255,255,.4) 13%, rgba(255,255,255,0) 14%) 130px 370px, radial-gradient(rgba(255,255,255,0) 0, rgba(255,255,255,.1) 11%, rgba(255,255,255,.2) 13%, rgba(255,255,255,0) 14%) 0 0, linear-gradient(45deg, #343702 0%, #184500 20%, #187546 30%, #006782 40%, #0b1284 50%, #760ea1 60%, #83096e 70%, #840b2a 80%, #b13e12 90%, #e27412 100%); background-size: 470px 470px, 970px 970px, 410px 410px, 610px 610px, 530px 530px, 730px 730px, 100% 100%; background-color: #840b2a; background-blend-mode: overlay; color: white; width: 100%;}');
-        janelaImpressao.document.write('table { width: 100%; table-layout: fixed; border-collapse: collapse; }');
-        janelaImpressao.document.write('td { width: 50%; text-align: center; padding: 10px; vertical-align: top; }');        
-        janelaImpressao.document.write('img { width: 70%; margin: 5px 0; border: 2px solid; padding: 5px; }'); // Reduzir o tamanho das imagens
-        janelaImpressao.document.write('.orientacao { display: flex; flex-direction: line; align-items: flex-start; margin-left: 10px; margin-right: 15px; padding: 10px; border: solid outset 2px #ccc; background-color: transparent; }');
-        janelaImpressao.document.write('.orientacao button { width: 300px; height: 50px; margin: 2px 15px; align-items: flex-start; padding: 5px; font-size: 16px; cursor: pointer; border: outset 5px rgb(151, 151, 181); border-radius: 5px; background: linear-gradient(45deg,#006782 40%, #0b1284 50%, #760ea1 60%, #83096e); color: white; transition: 0.2s; }');
-        janelaImpressao.document.write('.orientacao button:hover { background-color: lightseagreen; transform: scale(1.1); }');
-        janelaImpressao.document.write('.orientacao button:active { transform: scale(0.95); }');
-        janelaImpressao.document.write('</style>');
-        janelaImpressao.document.write('</head><body>');
-        janelaImpressao.document.write('<header>');
-        janelaImpressao.document.write('<h1 style="font-size: 40px;"><b>Triangularizando e Aprendendo</b></h1>'); // Aumentar o tamanho da fonte do cabeçalho
-        janelaImpressao.document.write('</header>');
-        janelaImpressao.document.write('<fieldset class="table" style="height: auto; text-align: center; color: white;">');
-        janelaImpressao.document.write('<legend class="table" style="font-size: 30px; text-align: center; margin: auto; color: Black;"><b><u>Imagens Geradas no Jogo</u></b></legend>'); // Adiciona o título da tabela
-        janelaImpressao.document.write('<table>');
+// Função para carregar as imagens salvas do localStorage e exibir na página de impressão
+document.addEventListener('DOMContentLoaded', () => {
+    const imagensContainer = document.getElementById('imagensContainer');
+    let imagensSalvas = JSON.parse(localStorage.getItem('imagensSalvas')) || [];
 
-        imagensSelecionadas.forEach((imagem, i) => {
-            janelaImpressao.document.write('<tr>');
-            
-            // Primeira coluna
-            janelaImpressao.document.write(`<td>
-                <fieldset>
-                    <legend>
-                        <input type="checkbox"> Pol_${i + 1}
-                    </legend>
-                    <img src="${imagensSalvas.querySelector('img').src}">
-                </fieldset>
-            </td>`);
-            
-            // Segunda coluna
-            if (imagensSelecionadas[i + 1]) {
-                janelaImpressao.document.write(`<td>
-                    <fieldset>
-                        <legend>
-                            <input type="checkbox"> Pol_${i + 2}
-                        </legend>
-                                        <img src="${imagensSalvas[i + 1].querySelector('img').src}">
-                                    </fieldset>
-                                </td>`);
-                            }
-});
-
-janelaImpressao.document.write('</table>');
-janelaImpressao.document.write('</fieldset>');
-janelaImpressao.document.write('<div class="orientacao">');
-janelaImpressao.document.write('<fieldset class="orientacao" style="font-size: 20px; text-align: center; color: blue;">');
-janelaImpressao.document.write('<legend style="font-size: 20px; text-align: center; color: black;">Opções:</legend>');
-janelaImpressao.document.write('<button id="voltarBtn">Voltar</button>'); // Botão Voltar
-janelaImpressao.document.write('<button id="sairBtn">Sair</button>'); // Botão Sair
-janelaImpressao.document.write('</fieldset>');
-janelaImpressao.document.write('</div>');
-janelaImpressao.document.write('<footer><p style="font-size: 20px; text-align: center;">Criado por Pablo e Greice em 2025</p></footer>'); // Aumentar o tamanho da fonte do rodapé
-janelaImpressao.document.write('</body></html>');
-janelaImpressao.document.close();
+    if (imagensSalvas.length === 0) {
+        imagensContainer.innerHTML = '<p>Nenhuma imagem salva.</p>';
+        return;
     }
-});
 
-// Evento para imprimir imagens selecionadas
-document.getElementById('imprimirSelecionadas').addEventListener('click', () => {
-    const imagensSelecionadas = document.querySelectorAll('.selecionada');
-    if (imagensSelecionadas.length > 0) {
-        const janelaImpressao = window.open('', '_blank');
-        janelaImpressao.document.write('<style>');
-        janelaImpressao.document.write('header {   height: 100px; margin-top: 1px;  margin-bottom: 10px;  padding: auto;  text-align: center;  width: 100%;  color:#ccc;  box-shadow: inset 0 0 10px #000;  background:  radial-gradient(rgba(255,255,255,0) 0, rgba(255,255,255,.15) 30%, rgba(255,255,255,.3) 32%, rgba(255,255,255,0) 33%) 0 0,  radial-gradient(rgba(255,255,255,0) 0, rgba(255,255,255,.1) 11%, rgba(255,255,255,.3) 13%, rgba(255,255,255,0) 14%) 0 0,  radial-gradient(rgba(255,255,255,0) 0, rgba(255,255,255,.2) 17%, rgba(255,255,255,.43) 19%, rgba(255,255,255,0) 20%) 0 110px,  radial-gradient(rgba(255,255,255,0) 0, rgba(255,255,255,.2) 11%, rgba(255,255,255,.4) 13%, rgba(255,255,255,0) 14%) -130px -170px,  radial-gradient(rgba(255,255,255,0) 0, rgba(255,255,255,.2) 11%, rgba(255,255,255,.4) 13%, rgba(255,255,255,0) 14%) 130px 370px,  radial-gradient(rgba(255,255,255,0) 0, rgba(255,255,255,.1) 11%, rgba(255,255,255,.2) 13%, rgba(255,255,255,0) 14%) 0 0,  linear-gradient(45deg, #343702 0%, #184500 20%, #187546 30%, #006782 40%, #0b1284 50%, #760ea1 60%, #83096e 70%, #840b2a 80%, #b13e12 90%, #e27412 100%);  background-size: 470px 470px, 970px 970px, 410px 410px, 610px 610px, 530px 530px, 730px 730px, 100% 100%;  background-color: #840b2a;  background-blend-mode: overlay; }');
-        janelaImpressao.document.write('body {  margin-bottom: 2px;  margin-top: 2px;  font-family: Arial, sans-serif;  display: flex;  flex-direction: column;  margin-left: 50px;  margin-right: 50px;  align-items: center;  background-image: linear-gradient(purple, white);  background-clip: padding-box;  padding: 5px;  overflow-y: auto;  height: auto;  line-height: 1.6;}');
-        janelaImpressao.document.write('footer {  height: 50px; font-size:10px; margin-top: 2px;  margin-bottom: 50x;  padding: 2px;  background:radial-gradient(rgba(255,255,255,0) 0, rgba(255,255,255,.15) 30%, rgba(255,255,255,.3) 32%, rgba(255,255,255,0) 33%) 0 0, radial-gradient(rgba(255,255,255,0) 0, rgba(255,255,255,.1) 11%, rgba(255,255,255,.3) 13%, rgba(255,255,255,0) 14%) 0 0,  radial-gradient(rgba(255,255,255,0) 0, rgba(255,255,255,.2) 17%, rgba(255,255,255,.43) 19%, rgba(255,255,255,0) 20%) 0 110px,  radial-gradient(rgba(255,255,255,0) 0, rgba(255,255,255,.2) 11%, rgba(255,255,255,.4) 13%, rgba(255,255,255,0) 14%) -130px -170px,  radial-gradient(rgba(255,255,255,0) 0, rgba(255,255,255,.2) 11%, rgba(255,255,255,.4) 13%, rgba(255,255,255,0) 14%) 130px 370px,  radial-gradient(rgba(255,255,255,0) 0, rgba(255,255,255,.1) 11%, rgba(255,255,255,.2) 13%, rgba(255,255,255,0) 14%) 0 0,  linear-gradient(45deg, #343702 0%, #184500 20%, #187546 30%, #006782 40%, #0b1284 50%, #760ea1 60%, #83096e 70%, #840b2a 80%, #b13e12 90%, #e27412 100%);  background-size: 470px 470px, 970px 970px, 410px 410px, 610px 610px, 530px 530px, 730px 730px, 100% 100%;  background-color: #840b2a;  background-blend-mode: overlay;  color: white;  width: 100%;}');
-        janelaImpressao.document.write('table { width: 100%; table-layout: fixed; border-collapse: collapse; }');
-        janelaImpressao.document.write('td { width: 50%; text-align: center; padding: 10px; vertical-align: top; }');        
-        janelaImpressao.document.write('img { width: 70%; margin: 5px 0; border: 2px solid; padding: 5px; }'); // Reduzir o tamanho das imagens
-        janelaImpressao.document.write('.orientacao { display: flex; flex-direction: line; align-items: flex-start; margin-left: 10px; margin-right: 15px; padding: 10px; border: solid outset 2px #ccc; background-color: transparent; }');
-        janelaImpressao.document.write('.orientacao button { width: 300px; height: 50px; margin: 2px 15px; align-items: flex-start; padding: 5px; font-size: 16px; cursor: pointer; border: outset 5px rgb(151, 151, 181); border-radius: 5px; background: linear-gradient(45deg,#006782 40%, #0b1284 50%, #760ea1 60%, #83096e); color: white; transition: 0.2s; }');
-        janelaImpressao.document.write('.orientacao button:hover { background-color: lightseagreen; transform: scale(1.1); }');
-        janelaImpressao.document.write('.orientacao button:active { transform: scale(0.95); }');
-        janelaImpressao.document.write('</style>');
-        janelaImpressao.document.write('</head><body>');
-        janelaImpressao.document.write('<header>');
-        janelaImpressao.document.write('<h1 style="font-size: 40px;"><b>Triangularizando e Aprendendo</b></h1>'); // Aumentar o tamanho da fonte do cabeçalho
-        janelaImpressao.document.write('</header>');
-        janelaImpressao.document.write('checkbox')
-        janelaImpressao.document.write('<fieldset class="table" style="height: auto; text-align: center; color: white;">');
-        janelaImpressao.document.write('<ledend class="table" style="font-size: 30px; text-align: center; margin: auto; color: Black;"><b><u><u>Imagens Geradas no Jogo</u></u></b>'); // Adiciona o título da tabela
-        janelaImpressao.document.write('<table>');
-        for (let i = 0; i < imagensSelecionadas.length; i += 3) {
-            janelaImpressao.document.write('<tr>');
-            
-            // Primeira coluna
-            janelaImpressao.document.write(`<td>
-                <fieldset>
-                    <legend>
-                        <input type="checkbox"> Pol_${i + 1}
-                    </legend>
-                    <img src="${imagensSelecionadas[i].querySelector('img').src}">
-                </fieldset>
-                </td>`);
-            
-            // Segunda coluna
-            if (imagensSelecionadas[i + 1]) {
-                janelaImpressao.document.write(`<td>
-                    <img src="${imagensSelecionadas[i + 1].querySelector('img').src}">
-                </td>`);
-            } else {
-                janelaImpressao.document.write('<td></td>');
-            }
-            
-            // Terceira coluna
-            if (imagensSelecionadas[i + 2]) {
-                janelaImpressao.document.write(`<td>
-                    <img src="${imagensSelecionadas[i + 2].querySelector('img').src}">
-                </td>`);
-            } else {
-                janelaImpressao.document.write('<td></td>');
-            }
-            
-            janelaImpressao.document.write('</tr>');
+    imagensContainer.innerHTML = ""; // Limpa o container antes de adicionar novas imagens
+
+    const table = document.createElement("table");
+    const tbody = document.createElement("tbody");
+    table.appendChild(tbody);
+    imagensContainer.appendChild(table);
+
+    let row;
+
+    imagensSalvas.forEach((imagem, i) => {
+        if (i % 3 === 0) {
+            row = document.createElement("tr");
+            tbody.appendChild(row);
         }
-        janelaImpressao.document.write('</table>');
-        janelaImpressao.document.write('</legend>'); // Adiciona o título da tabela
-        janelaImpressao.document.write('</fieldset>');
-        janelaImpressao.document.write('<div class="orientacao">');
-        janelaImpressao.document.write('<fieldset class="orientacao" style="font-size: 20px; text-align: center; color: blue;">');
-        janelaImpressao.document.write('<legend style="font-size: 20px; text-align: center; color: black;">Opções:</legend>');
-        janelaImpressao.document.write('<button id="voltarBtn">Voltar</button>'); // Botão Voltar
-        janelaImpressao.document.write('<button id="sairBtn">Sair</button>'); // Botão Sair
-        janelaImpressao.document.write('</fieldset>');
-        janelaImpressao.document.write('</div>');
-        janelaImpressao.document.write('<footer><p style="font-size: 20px; text-align: center;">Criado por Pablo e Greice em 2025</p></footer>'); // Aumentar o tamanho da fonte do rodapé
-        janelaImpressao.document.write('</body></html>');
-        janelaImpressao.document.close();
 
-        // Adicionar eventos aos botões
-        janelaImpressao.document.getElementById('voltarBtn').addEventListener('click', () => {
-            janelaImpressao.close();
-            voltar1();
+        const cell = document.createElement("td");
+        cell.innerHTML = `
+            <fieldset class="orientaçao">
+                <legend class="Tb">
+                    <b>
+                        <input type='checkbox' class='imagensSalvas' data-index='${i}' style="width: 22px; height: 22px; margin-left: 20px;"> 
+                        ${imagem.legenda}
+                    </b>
+                </legend>
+                <div style="position: relative; display: inline-block;">
+                    <button class="deleteBtn" data-index="${i}" 
+                        style="position: absolute; top: 5px; right: 5px; background: none; border: none; cursor: pointer;">
+                        <i class="fas fa-trash-alt" style="color: black; font-size: 18px;"></i>
+                    </button>
+                    <img width="280px" style="margin:15px" src='${imagem.dataURL}' alt='${imagem.legenda}'>
+                </div>                    
+            </fieldset>
+        `;
+
+        row.appendChild(cell);
+    });
+
+    // Evento para deletar uma única imagem ao clicar na lixeira
+    document.querySelectorAll('.deleteBtn').forEach(button => {
+        button.addEventListener('click', function () {
+            const index = parseInt(this.dataset.index);
+            imagensSalvas = imagensSalvas.filter((_, i) => i !== index);
+            localStorage.setItem('imagensSalvas', JSON.stringify(imagensSalvas));
+            location.reload();
         });
-        
-        janelaImpressao.print();
-        janelaImpressao.onafterprint = () => janelaImpressao.close(); // Fechar a janela após a impressão
-    } else {
-        alert('Nenhuma imagem selecionada para impressão.');
-    }
-      
+    });
+
+    // Botão para selecionar todas as imagens
+    document.getElementById('selecionarTodasBtn').addEventListener('click', () => {
+        const checkboxes = document.querySelectorAll('.imagensSalvas');
+        const todasSelecionadas = [...checkboxes].every(checkbox => checkbox.checked);
+        checkboxes.forEach(checkbox => checkbox.checked = !todasSelecionadas);
+    });
+
+    // Botão para deletar imagens selecionadas
+    document.getElementById('deletarTodasBtn').addEventListener('click', () => {
+        const checkboxesSelecionados = document.querySelectorAll('.imagensSalvas:checked');
+
+        if (checkboxesSelecionados.length === 0) {
+            alert("Nenhuma imagem selecionada para deletar.");
+            return;
+        }
+
+        if (!confirm("Tem certeza de que deseja excluir as imagens selecionadas?")) {
+            return;
+        }
+
+        imagensSalvas = imagensSalvas.filter((_, i) => 
+            ![...checkboxesSelecionados].some(checkbox => parseInt(checkbox.dataset.index) === i)
+        );
+
+        localStorage.setItem('imagensSalvas', JSON.stringify(imagensSalvas));
+        location.reload();
+    });
 });
 
-// Chame a função para carregar as imagens quando a página for carregada
-window.onload = carregarImagens;
+// Evento para imprimir as imagens selecionadas
+document.getElementById('imprimirBtn').addEventListener('click', () => {
+    const checkboxesSelecionados = document.querySelectorAll('.imagensSalvas:checked');
+
+    if (checkboxesSelecionados.length === 0) {
+        alert("Nenhuma imagem selecionada para impressão.");
+        return;
+    }
+
+    const imagensSalvas = JSON.parse(localStorage.getItem('imagensSalvas')) || [];
+    const janelaImpressao = window.open('', '_blank');
+
+    janelaImpressao.document.write(`
+        <html>
+        <head>
+            <title>Impressão - Triangularizando e Aprendendo</title>
+            <link rel="stylesheet" href="estilos/estilos-comuns.css">
+            <link rel="stylesheet" href="estilos/estilo-imprimir.css">
+        </head>
+        <body>
+            <main id="game-container">
+                <header><h1>Triangularizando e Aprendendo</h1></header>
+                <aside id="sidebar">
+                <fieldset class="orientaçao">
+                    <legend class="Tb"><b>Menu:</b></legend>            
+                    <button id="voltarBtn"><b>Voltar</b></button>
+                    <button id="sairBtn"><b>Sair</b></button>           
+                </fieldset>
+                </aside>
+                <fieldset class="orientaçao">             
+                    <legend><b class="Tb" style="text-align: center;">Imagens Selecionadas:</b></legend>
+                    <table>
+                        <tbody>
+    `);
+
+    let count = 0;
+    janelaImpressao.document.write("<tr>");
+
+    checkboxesSelecionados.forEach(checkbox => {
+        const index = parseInt(checkbox.dataset.index);
+        const imagem = imagensSalvas[index];
+
+        if (!imagem) return;
+
+        if (count === 3) {
+            janelaImpressao.document.write("</tr><tr>");
+            count = 0;
+        }
+
+        janelaImpressao.document.write(`
+            <td>
+                <fieldset class="orientaçao">
+                    <legend style="color: black; fontSize: 24px; text-align: center;"><b class="Tb">${imagem.legenda}</b></legend>
+                    <img width="150px" style="margin:15px" src='${imagem.dataURL}' alt='${imagem.legenda}'>
+                </fieldset>
+            </td>
+        `);
+
+        count++;
+    });
+
+    if (count > 0) {
+        janelaImpressao.document.write("</tr>");
+    }
+
+    janelaImpressao.document.write(`
+                        </tbody>
+                    </table>
+                </fieldset>
+            </main>
+            <script>
+                document.getElementById('voltarBtn').addEventListener('click', () => {
+                    window.close();
+                });
+
+                document.getElementById('sairBtn').addEventListener('click', () => {
+                    window.close();
+                });
+
+                window.onload = () => {
+                    window.print();
+                };
+            </script>
+            <footer style="margin-top: 10px;">
+                <fieldset id="credits">
+                    <legend>Créditos</legend>
+                    <p>Criado por Pablo e Greice em 2025</p>
+                </fieldset>
+            </footer>
+        </body>
+        </html>
+    `);
+
+    janelaImpressao.document.close();
+});
