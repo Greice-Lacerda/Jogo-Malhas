@@ -1,10 +1,11 @@
 let numVertices = parseInt(prompt('Escolha o número de vértices (mínimo 3):', 3));
 if (isNaN(numVertices) || numVertices < 3) {
-    window.location.href = 'index.html';
+    window.location.href = 'C:/Users/Greice Lacerda/OneDrive/ASSUNTOS DE KELI/CAP-UERJ/PARA ARTIGOS FUTUROS 2025/Jogo Malhas/pages/instrucoes/index.html';
 } else {
     // Reiniciar o jogo
     iniciarJogo();
 }
+
 let vertices = [];
 let arestas = [];
 let canvas = document.getElementById('gameCanvas');
@@ -23,11 +24,11 @@ canvas.style.borderRadius = '10px';
 canvas.style.boxShadow = '0 4px 8px rgba(0, 0, 0, 0.2)';
 
 function voltar() {
-    window.location.href = 'index.html'; 
+    window.location.href = 'C:/Users/Greice Lacerda/OneDrive/ASSUNTOS DE KELI/CAP-UERJ/PARA ARTIGOS FUTUROS 2025/Jogo Malhas/pages/instrucoes.html'; 
 }
 
 function imprimirJogo() {
-    window.open('imprimir.html', '_blank');
+    window.open('C:/Users/Greice Lacerda/OneDrive/ASSUNTOS DE KELI/CAP-UERJ/PARA ARTIGOS FUTUROS 2025/Jogo Malhas/pages/imprimir.html', '_blank');
 }
 
 function sairJogo() {
@@ -44,11 +45,13 @@ document.getElementById('resetButton').addEventListener('click', function() {
         
         // Redesenhar o canvas limpo
         desenharCanvasLimpo();
+
         // Solicitar nova escolha de número de vértices
         numVertices = parseInt(prompt('Escolha o número de vértices (mínimo 3):', 3));
         if (isNaN(numVertices) || numVertices < 3) {
-            window.location.href = 'index.html';
+            window.location.href = 'C:/Users/Greice Lacerda/OneDrive/ASSUNTOS DE KELI/CAP-UERJ/PARA ARTIGOS FUTUROS 2025/Jogo Malhas/pages/instrucoes.html';
         } else {
+
             // Reiniciar o jogo
             iniciarJogo();
         }
@@ -74,6 +77,7 @@ function desenharCanvasLimpo() {
 
 function iniciarJogo() {
     // Lógica de inicialização do jogo
+    
     desenharCanvasLimpo();
     // Outras lógicas de inicialização, se necessário
 }

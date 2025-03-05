@@ -1,50 +1,48 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-  <title>Imprimir - Jogo de Vértices</title>
-  <link rel="stylesheet" href="estilos/estilos-comuns.css">
-  <link rel="stylesheet" href="estilos/estilo-imprimir.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Imprimir - Triangularizando e Aprendendo</title>
+
+    <!-- Estilos Externos -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="../estilos/estilos-comuns.css">
+    <link rel="stylesheet" href="../estilos/estilo-imprimir.css">
 </head>
 <body>
-  <header>
-    <h1><b>Triangularizando e Aprendendo - Imprimir</b></h1>
-  </header>
-  <main id="game-container">
-    <aside id="sidebar">
-      <fieldset class="orientaçao">
-        <legend class="Tb"><b class="Tb">Menu:</b></legend>
-         <button onclick="Fechar()"><b>Fechar</b></button>       
-         <button id="imprimirBtn"><b>Imprimir Imagens</b></button> 
-         <button id="selecionarTodasBtn"><b>Selecionar Todas</b></button>        
-         <button id="deletarTodasBtn"><b>Deletar Todas</b></button>      
-      </fieldset>
-    </aside>
-    <section>
-      <fieldset class="orientaçao">
-        <legend class="Tb"><b id="Tb">Imagens Salvas:</b></legend>
-        <div id="imagensContainer">
-          <!-- As imagens serão exibidas aqui -->
-        </div>
-      </fieldset>
-    </section>
-  </main>
-  <footer>
-    <fieldset id="credits">
-      <legend>Créditos</legend>
-      <p>Criado por Pablo e Greice em 2025</p>
-    </fieldset>
-  </footer>
-  <!-- Modal para visualização de imagens -->
-  <div id="myModal" class="modal">
-    <span class="close">&times;</span>
-    <img class="modal-content" id="imgModal">
-  </div>
-  <script src="js/imprimir.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.7.1/jszip.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2.0.5/FileSaver.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/compressorjs/1.0.7/compressor.min.js"></script>
+    <header>
+        <h1><b>Triangularizando e Aprendendo - Impressão</b></h1>
+    </header>
+
+    <main id="game-container">
+        <aside id="sidebar">
+            <fieldset class="orientacao">
+                <legend class="Tb"><b>Menu:</b></legend>            
+                <button onclick="voltarParaFase1()"><b>Voltar para a Fase 1</b></button>
+                <button id="imprimirBtn"><b>Imprimir Imagens</b></button>
+                <button id="selecionarTodasBtn"><b>Selecionar Todas</b></button>
+                <button id="deletarTodasBtn"><b>Deletar Todas</b></button>                
+            </fieldset>
+        </aside>
+        <br>
+        <fieldset class="orientacao">
+            <legend><b class="Tb">Imagens Salvas:</b></legend>
+            <div id="imagensContainer">
+              <div id="imagensSalvas">
+                  <!-- As imagens carregadas do localStorage serão inseridas aqui -->
+              </div>
+            </div>
+        </fieldset>
+    </main>
+
+    <footer>
+        <fieldset id="credits">
+            <legend>Créditos</legend>
+            Criado por Pablo e Greice em 2025
+        </fieldset>
+    </footer>
+
+    <script src="../js/imprimir.js"></script>
 </body>
 </html>

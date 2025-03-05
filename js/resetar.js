@@ -10,7 +10,7 @@ document.getElementById('resetButton').addEventListener('click', function() {
         // Solicitar nova escolha de número de vértices
         numVertices = parseInt(prompt('Escolha o número de vértices (mínimo 3):', 3));
         if (isNaN(numVertices) || numVertices < 3) {
-            window.location.href = 'index.html';
+            window.location.href = window.location.href ="C:/Users/Greice Lacerda/OneDrive/ASSUNTOS DE KELI/CAP-UERJ/PARA ARTIGOS FUTUROS 2025/Jogo Malhas/pages/index.html";
         } else {
             // Reiniciar o jogo
             iniciarJogo();

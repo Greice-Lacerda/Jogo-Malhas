@@ -32,7 +32,7 @@ document.addEventListener("DOMContentLoaded", () => {
     
         // Restaura o cursor e adiciona o ouvinte de clique ao canvas
         inputCor.addEventListener("change", () => {
-            canvas.style.cursor = 'url("Imagens/cursor-de-caneta.png"), auto'; // Ícone de pincel
+            canvas.style.cursor = 'url("C:/Users/Greice Lacerda/OneDrive/ASSUNTOS DE KELI/CAP-UERJ/PARA ARTIGOS FUTUROS 2025/Jogo Malhas/Imagens/cursor-de-caneta.png"), auto'; // Ícone de pincel
             canvas.addEventListener("click", selecionarVertice);
         });
     
@@ -77,13 +77,13 @@ document.addEventListener("DOMContentLoaded", () => {
             pinturaConcluida = true;
             canvas.style.cursor = "default"; // Voltar ao cursor normal
             setTimeout(() => {  // Espera a pintura ser completamente renderizada
-                aplausoAplausos.mp3;
+                let audio = new Audio("C:/Users/Greice Lacerda/OneDrive/ASSUNTOS DE KELI/CAP-UERJ/PARA ARTIGOS FUTUROS 2025/Jogo Malhas/pages/Aplausos.mp3");
+                audio.play(); // Reproduz o som
                 alert("Toda a figura foi preenchida!"); // Exibe a mensagem após a pintura
             }, 0);
 
-            setTimeout(() => {  // Espera a pintura ser completamente renderizada
-                alert('Clique em salvar para continuar o jogo!'); // Exibe a mensagem após a pintura
-            }, 2);
+            
+
         }
     }
 

@@ -1,9 +1,10 @@
+/*estulo index*/
 #game-container {
     display: flex;
     flex-direction: row;
 }
 
-.orientaçao {
+.orientacao {
     display: flex;
     flex-direction: column;
     align-items: flex-start;

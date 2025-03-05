@@ -1,20 +1,16 @@
-// Função para fechar a janela atual
-function Fechar() {
-    window.close();
+// Função para voltar à fase 1
+function voltarParaFase1() {
+    window.location.href = '../pages/fase1.html';
 }
 
-// Função para voltar à página de impressão
-function voltar1() {
-    window.location.href = 'imprimir.html';
-}
-
-// Função para carregar as imagens salvas do localStorage e exibir na página de impressão
+// Função para carregar imagens salvas do localStorage e exibir na página
 document.addEventListener('DOMContentLoaded', () => {
     const imagensContainer = document.getElementById('imagensContainer');
     let imagensSalvas = JSON.parse(localStorage.getItem('imagensSalvas')) || [];
+    let imagensRemovidas = JSON.parse(localStorage.getItem('imagensRemovidas')) || [];
 
     if (imagensSalvas.length === 0) {
-        imagensContainer.innerHTML = '<p>Nenhuma imagem salva.</p>';
+        imagensContainer.innerHTML = '<p> Nenhuma imagem salva.</p>';
         return;
     }
 
@@ -35,20 +31,17 @@ document.addEventListener('DOMContentLoaded', () => {
 
         const cell = document.createElement("td");
         cell.innerHTML = `
-            <fieldset class="orientaçao">
-                <legend class="Tb">
-                    <b>
-                        <input type='checkbox' class='imagensSalvas' data-index='${i}' style="width: 22px; height: 22px; margin-left: 20px;"> 
-                        ${imagem.legenda}
-                    </b>
-                </legend>
-                <div style="position: relative; display: inline-block;">
-                    <button class="deleteBtn" data-index="${i}" 
-                        style="position: absolute; top: 5px; right: 5px; background: none; border: none; cursor: pointer;">
-                        <i class="fas fa-trash-alt" style="color: black; font-size: 18px;"></i>
-                    </button>
-                    <img width="280px" style="margin:15px" src='${imagem.dataURL}' alt='${imagem.legenda}'>
-                </div>                    
+            <fieldset class="orientacao">
+                <legend class="Tb" style="text-align: center;"><input type='checkbox' class='imagensSalvas' data-index='${i}' style="width: 22px; height: 22px; margin: 20px;">${imagem.legenda}</b></legend>                
+                    <div>           
+                        <div style="position: absolute; top: 5px; margin-right: 1px; background: none; border: none; cursor: pointer; color: blue;">
+                            <button class="deleteBtn" data-index="${i}" 
+                            style="background: none; border: solid; cursor: pointer;">
+                            <i class="fas fa-trash-alt" style="color: black; font-size: 18px;"></i>
+                            </button>
+                        </div>
+                    <img src='${imagem.dataURL}' alt='${imagem.legenda}' style="width: 280px; margin: 15px; object-fit: contain;">
+                  
             </fieldset>
         `;
 
@@ -59,133 +52,154 @@ document.addEventListener('DOMContentLoaded', () => {
     document.querySelectorAll('.deleteBtn').forEach(button => {
         button.addEventListener('click', function () {
             const index = parseInt(this.dataset.index);
-            imagensSalvas = imagensSalvas.filter((_, i) => i !== index);
+            const imagemRemovida = imagensSalvas.splice(index, 1)[0];
+            imagensRemovidas.push(imagemRemovida);
             localStorage.setItem('imagensSalvas', JSON.stringify(imagensSalvas));
+            localStorage.setItem('imagensRemovidas', JSON.stringify(imagensRemovidas));
             location.reload();
         });
     });
 
-    // Botão para selecionar todas as imagens
-    document.getElementById('selecionarTodasBtn').addEventListener('click', () => {
-        const checkboxes = document.querySelectorAll('.imagensSalvas');
-        const todasSelecionadas = [...checkboxes].every(checkbox => checkbox.checked);
-        checkboxes.forEach(checkbox => checkbox.checked = !todasSelecionadas);
-    });
-
-    // Botão para deletar imagens selecionadas
-    document.getElementById('deletarTodasBtn').addEventListener('click', () => {
+    // Evento para imprimir as imagens selecionadas
+    document.getElementById('imprimirBtn').addEventListener('click', () => {
         const checkboxesSelecionados = document.querySelectorAll('.imagensSalvas:checked');
 
         if (checkboxesSelecionados.length === 0) {
-            alert("Nenhuma imagem selecionada para deletar.");
+            alert("Nenhuma imagem selecionada para impressão.");
             return;
         }
 
-        if (!confirm("Tem certeza de que deseja excluir as imagens selecionadas?")) {
-            return;
-        }
-
-        imagensSalvas = imagensSalvas.filter((_, i) => 
-            ![...checkboxesSelecionados].some(checkbox => parseInt(checkbox.dataset.index) === i)
-        );
-
-        localStorage.setItem('imagensSalvas', JSON.stringify(imagensSalvas));
-        location.reload();
-    });
-});
-
-// Evento para imprimir as imagens selecionadas
-document.getElementById('imprimirBtn').addEventListener('click', () => {
-    const checkboxesSelecionados = document.querySelectorAll('.imagensSalvas:checked');
-
-    if (checkboxesSelecionados.length === 0) {
-        alert("Nenhuma imagem selecionada para impressão.");
-        return;
-    }
-
-    const imagensSalvas = JSON.parse(localStorage.getItem('imagensSalvas')) || [];
-    const janelaImpressao = window.open('', '_blank');
-
-    janelaImpressao.document.write(`
-        <html>
-        <head>
-            <title>Impressão - Triangularizando e Aprendendo</title>
-            <link rel="stylesheet" href="estilos/estilos-comuns.css">
-            <link rel="stylesheet" href="estilos/estilo-imprimir.css">
-        </head>
-        <body>
-            <main id="game-container">
-                <header><h1>Triangularizando e Aprendendo</h1></header>
-                <aside id="sidebar">
-                <fieldset class="orientaçao">
-                    <legend class="Tb"><b>Menu:</b></legend>            
-                    <button id="voltarBtn"><b>Voltar</b></button>
-                    <button id="sairBtn"><b>Sair</b></button>           
-                </fieldset>
-                </aside>
-                <fieldset class="orientaçao">             
-                    <legend><b class="Tb" style="text-align: center;">Imagens Selecionadas:</b></legend>
-                    <table>
-                        <tbody>
-    `);
-
-    let count = 0;
-    janelaImpressao.document.write("<tr>");
-
-    checkboxesSelecionados.forEach(checkbox => {
-        const index = parseInt(checkbox.dataset.index);
-        const imagem = imagensSalvas[index];
-
-        if (!imagem) return;
-
-        if (count === 3) {
-            janelaImpressao.document.write("</tr><tr>");
-            count = 0;
-        }
+        const janelaImpressao = window.open('', '_blank');
 
         janelaImpressao.document.write(`
-            <td>
-                <fieldset class="orientaçao">
-                    <legend style="color: black; fontSize: 24px; text-align: center;"><b class="Tb">${imagem.legenda}</b></legend>
-                    <img width="150px" style="margin:15px" src='${imagem.dataURL}' alt='${imagem.legenda}'>
-                </fieldset>
-            </td>
+            <html>
+            <head>
+                <title>Impressão - Triangularizando e Aprendendo</title>
+                <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+                <link rel="stylesheet" href="../estilos/estilos-comuns.css">
+                <link rel="stylesheet" href="../estilos/estilo-imprimir.css">
+            </head>
+            <body>
+                <header><h1>Triangularizando e Aprendendo</h1></header>
+                <main id="game-container">
+                <aside id="sidebar">
+                <fieldset class="orientacao"> 
+                <legend><b class="Tb" style="text-align: center;">Menu:</b></legend>
+                <button id="voltarBtn" style="width: 300px; margin: 20px; padding: 10px; font-size: 16px;">Voltar para janela de impressão</button>
+                </fieldset><br>
+                </aside>
+                <fieldset class="orientacao">             
+                    <legend><b class="Tb" style="text-align: center;">Imagens Selecionadas:</b></legend>
+                    <table><tr>
         `);
 
-        count++;
-    });
+        let count = 0;
 
-    if (count > 0) {
-        janelaImpressao.document.write("</tr>");
-    }
+        checkboxesSelecionados.forEach(checkbox => {
+            const index = parseInt(checkbox.dataset.index);
+            const imagem = imagensSalvas[index];
 
-    janelaImpressao.document.write(`
-                        </tbody>
-                    </table>
-                </fieldset>
+            if (count === 3) {
+                janelaImpressao.document.write("</tr><tr>");
+                count = 0;
+            }
+
+            janelaImpressao.document.write(`
+                <td>
+                    <fieldset class="orientacao">                        
+                        <legend><b class="Tb" style="text-align: center;">${imagem.legenda}</b></legend>
+                        <div id="imagensSalvas">                      
+                        <img width="200px" src='${imagem.dataURL}'>
+                        </div>
+                    </fieldset>
+                </td>
+            `);
+
+            count++;
+        });
+
+        janelaImpressao.document.write(`
+            </tr></table></fieldset>            
             </main>
-            <script>
-                document.getElementById('voltarBtn').addEventListener('click', () => {
-                    window.close();
-                });
-
-                document.getElementById('sairBtn').addEventListener('click', () => {
-                    window.close();
-                });
-
-                window.onload = () => {
-                    window.print();
-                };
-            </script>
-            <footer style="margin-top: 10px;">
+            <footer>
                 <fieldset id="credits">
                     <legend>Créditos</legend>
-                    <p>Criado por Pablo e Greice em 2025</p>
+                    Criado por Pablo e Greice em 2025
                 </fieldset>
             </footer>
-        </body>
-        </html>
-    `);
+            </body>
+            </html>
+        `);
+        
+        // Fecha o documento da janela de impressão
+        janelaImpressao.document.close();
 
-    janelaImpressao.document.close();
+        // Adiciona um ouvinte de evento para o evento 'load' da janela de impressão
+        janelaImpressao.addEventListener('load', () => {
+            janelaImpressao.print();
+
+            // Obtém o botão "Voltar" na janela de impressão
+            const voltarBtn = janelaImpressao.document.getElementById('voltarBtn');
+            if (voltarBtn) {
+
+                // Adiciona um ouvinte de evento de clique ao botão "Voltar"
+                voltarBtn.addEventListener('click', () => {
+
+                    // Fecha a janela de impressão ao clicar no botão "Voltar"
+                    janelaImpressao.close();
+                });
+            } else {
+                console.error('Botão "Voltar" não encontrado na janela de impressão.');
+            }
+        }, true);
+    });
+
+    // Função para selecionar/deselecionar todas as checkboxes
+    function selecionarTodas() {
+        const checkboxes = document.querySelectorAll('.imagensSalvas');
+        const selecionarTodasBtn = document.getElementById('selecionarTodasBtn');
+        const isChecked = selecionarTodasBtn.classList.toggle('imagensSalvas');
+
+        checkboxes.forEach(checkbox => {
+            checkbox.checked = isChecked;
+        });
+    }
+
+    // Função para deletar todas as imagens selecionadas
+    function deletarTodas() {
+        if (confirm('Tem certeza que deseja deletar todas as imagens selecionadas?')) {
+            const imagensSalvas = JSON.parse(localStorage.getItem('imagensSalvas')) || [];
+            const checkboxesSelecionados = document.querySelectorAll('.imagensSalvas:checked');
+
+            checkboxesSelecionados.forEach(checkbox => {
+                const index = parseInt(checkbox.dataset.index);
+                const imagemRemovida = imagensSalvas.splice(index, 1)[0];
+                imagensRemovidas.push(imagemRemovida);
+            });
+
+            localStorage.setItem('imagensSalvas', JSON.stringify(imagensSalvas));
+            localStorage.setItem('imagensRemovidas', JSON.stringify(imagensRemovidas));
+            location.reload();
+        }
+    }
+
+    // Função para desfazer a última exclusão de imagem
+    function desfazerDeletar() {
+        if (imagensRemovidas.length === 0) {
+            alert('Não há imagens deletadas para restaurar.');
+            return;
+        }
+
+        const imagemRestaurada = imagensRemovidas.pop();
+        imagensSalvas.push(imagemRestaurada);
+
+        localStorage.setItem('imagensSalvas', JSON.stringify(imagensSalvas));
+        localStorage.setItem('imagensRemovidas', JSON.stringify(imagensRemovidas));
+        location.reload();
+    }
+
+    // Adiciona eventos aos botões
+    document.getElementById('selecionarTodasBtn').addEventListener('click', selecionarTodas);
+    document.getElementById('deletarTodasBtn').addEventListener('click', deletarTodas);
+    document.getElementById('desfazerDeletarBtn').addEventListener('click', desfazerDeletar);
 });

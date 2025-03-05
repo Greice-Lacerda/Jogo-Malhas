@@ -57,7 +57,7 @@ b{
 
 .texto-na-frente {
     position: absolute; /* Define a posição absoluta para o texto */
-    top: 0; /* Alinha o texto ao topo do contêiner */
+    top: 0; /* texto ao topo do contêiner */
     left: 0; /* Alinha o texto à esquerda do contêiner */
     width: 100%; /* Ajusta a largura do texto */
     color: black; /* Cor do texto */
@@ -97,4 +97,3 @@ b{
     font-size: 18px;
     filter: drop-shadow(0 0 5px white);
 }
-

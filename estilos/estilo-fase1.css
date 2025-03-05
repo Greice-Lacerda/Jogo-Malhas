@@ -17,7 +17,7 @@
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
-.orientaçao {
+.orientacao {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
@@ -29,7 +29,7 @@
     height: 430px;
 }
 
-.orientaçao button {
+.orientacao button {
     width: 200px;
     height: 25px;
     margin-bottom: 10px;
@@ -43,12 +43,12 @@
     transition: 0.2s, background-color 0.3s;
 }
 
-.orientaçao button:hover {
+.orientacao button:hover {
     background-color: lightgreen;
     transform: scale(1.1);
 }
 
-.orientaçao button:active {
+.orientacao button:active {
     transform: scale(0.95);
 }
 
