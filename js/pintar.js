@@ -82,8 +82,9 @@ document.addEventListener("DOMContentLoaded", () => {
                 alert("Toda a figura foi preenchida!"); // Exibe a mensagem após a pintura
             }, 0);
 
-            
-
+            setTimeout(() => {  
+                alert("Salve a imagem para prosseguir!"); 
+            }, 0); 
         }
     }
 

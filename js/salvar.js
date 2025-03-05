@@ -60,6 +60,7 @@ document.getElementById('salvarJogo').addEventListener('click', function () {
         msgDiv.remove();
     }, 1000);
 }
+});
 
 // Evento para carregar imagens ao iniciar a página
 window.onload = carregarImagens;
