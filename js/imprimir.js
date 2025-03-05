@@ -32,16 +32,17 @@ document.addEventListener('DOMContentLoaded', () => {
         const cell = document.createElement("td");
         cell.innerHTML = `
             <fieldset class="orientacao">
-                <legend class="Tb" style="text-align: center;"><input type='checkbox' class='imagensSalvas' data-index='${i}' style="width: 22px; height: 22px; margin: 20px;">${imagem.legenda}</b></legend>                
+                <legend class="Tb" style="text-align: center;"><input type='checkbox' class='imagensSalvas' data-index='${i}' style="width: 22px; height: 22px; margin-top: 25px;">${imagem.legenda}</b></legend>                
                     <div>           
-                        <div style="position: absolute; top: 5px; margin-right: 1px; background: none; border: none; cursor: pointer; color: blue;">
-                            <button class="deleteBtn" data-index="${i}" 
-                            style="background: none; border: solid; cursor: pointer;">
+                        <button class="deleteBtn" data-index="${i}"  
+                            style="position: absolute; margin-top: 5px; left: 140px; 
+                            background: none; 
+                            border: none; 
+                            cursor: pointer;">
                             <i class="fas fa-trash-alt" style="color: black; font-size: 18px;"></i>
-                            </button>
-                        </div>
-                    <img src='${imagem.dataURL}' alt='${imagem.legenda}' style="width: 280px; margin: 15px; object-fit: contain;">
-                  
+                        </button>                       
+                    <img src='${imagem.dataURL}' alt='${imagem.legenda}' style="width: 280px; margin: 15px; border: 3px solid white; object-fit: contain;">
+                    </div>     
             </fieldset>
         `;
 
